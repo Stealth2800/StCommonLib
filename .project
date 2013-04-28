@@ -18,7 +18,7 @@
 		<link>
 			<name>lib</name>
 			<type>2</type>
-			<locationURI>BUKKIT_LIBS</locationURI>
+			<locationURI>BUKKIT_LOCATION/Libraries</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

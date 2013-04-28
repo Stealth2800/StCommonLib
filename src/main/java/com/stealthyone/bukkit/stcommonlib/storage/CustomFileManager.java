@@ -28,6 +28,14 @@ public class CustomFileManager {
 	}
 	
 	/**
+	 * Returns the file
+	 * @return Custom file
+	 */
+	public final File getFile() {
+		return this.customFile;
+	}
+	
+	/**
 	 * Reload file from disk
 	 */
 	public void reloadConfig() {
@@ -55,16 +63,17 @@ public class CustomFileManager {
 
 	/**
 	 * Save changes to file on disk
+	 * @throws IOException 
 	 */
 	public void saveFile() {
         if (customConfig == null || customFile == null) {
         	this.reloadConfig();
         } else {
-            try {
-            	this.getConfig().save(customFile);
-            } catch (IOException ex) {
-            	ex.printStackTrace();
-            }
+        	try {
+				this.getConfig().save(customFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
 	}
 
