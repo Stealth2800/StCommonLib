@@ -1,6 +1,6 @@
 name: StCommonLib
 main: com.stealthyone.bukkit.stcommonlib.BasePlugin
-version: 2013.04.28.001
+version: 2013.04.28.002
 website: http://stealthyone.com/bukkit
 description: Set of some useful classes that I use frequently in my plugins
 author: Stealth2800
