@@ -27,6 +27,12 @@ public class CustomFileManager {
 		this.reloadConfig();
 	}
 	
+	public final void copyDefaults(FileConfiguration otherConfig) {
+		customConfig.addDefaults(otherConfig);
+		customConfig.options().copyDefaults(true);
+		saveFile();
+	}
+	
 	/**
 	 * Returns the file
 	 * @return Custom file

@@ -1,5 +1,6 @@
 package com.stealthyone.bukkit.stcommonlib.messages;
 
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.stealthyone.bukkit.stcommonlib.storage.CustomFileManager;
@@ -10,12 +11,14 @@ public final class MessageRetriever {
 	private JavaPlugin plugin;
 	private CustomFileManager messageFile;
 	
-	public MessageRetriever(JavaPlugin plugin) {
+	public MessageRetriever(JavaPlugin plugin, String fileName) {
 		this.plugin = plugin;
-		messageFile = new CustomFileManager(plugin, "messages");
+		messageFile = new CustomFileManager(plugin, fileName);
 		if (!messageFile.getFile().exists()) {
-			FileUtils.copyFileFromJar(plugin, "messages.yml");
+			FileUtils.copyFileFromJar(plugin, fileName + ".yml");
 			messageFile.reloadConfig();
+		} else {
+			messageFile.copyDefaults(YamlConfiguration.loadConfiguration(plugin.getResource(fileName + ".yml"))); 
 		}
 	}
 	
