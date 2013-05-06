@@ -1,6 +1,5 @@
 package com.stealthyone.bukkit.stcommonlib.utils;
 
-
 public final class StringUtils {
 
 	public final static boolean equalsIgnoreCaseMultiple(String main, String... comparisons) {

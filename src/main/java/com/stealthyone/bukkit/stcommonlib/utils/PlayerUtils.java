@@ -1,9 +1,12 @@
 package com.stealthyone.bukkit.stcommonlib.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import com.stealthyone.bukkit.stcommonlib.permissions.IPermissionNode;
 
 public final class PlayerUtils {
 
@@ -17,5 +20,19 @@ public final class PlayerUtils {
 		} else {
 			return Bukkit.getPlayer(name);
 		}
+	}
+	
+	public final static List<Player> getPlayerListWithPermission(Player[] onlinePlayers, IPermissionNode... permissions) {
+		List<Player> returnList = new ArrayList<Player>();
+		
+		for (Player player : onlinePlayers) {
+			for (IPermissionNode perm : permissions) {
+				if (player.hasPermission(perm.get())) {
+					returnList.add(player);
+				}
+			}
+		}
+		
+		return returnList;
 	}
 }
