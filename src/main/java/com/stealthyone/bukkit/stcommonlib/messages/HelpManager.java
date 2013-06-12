@@ -40,7 +40,7 @@ public class HelpManager {
 		
 		try {
 			for (int i = 0; i < 8; i++) {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.get(i + ((page - 1) * 8))));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.get(i + ((page - 1) * 8)).replace("{LABEL}", label)));
 			}
 			
 			if ((page - 1) * 8 < messages.size()) {

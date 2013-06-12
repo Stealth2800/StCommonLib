@@ -36,4 +36,5 @@ public final class CustomItem {
 	public final List<String> getLore() {
 		return item.getItemMeta().getLore();
 	}
+	 
 }

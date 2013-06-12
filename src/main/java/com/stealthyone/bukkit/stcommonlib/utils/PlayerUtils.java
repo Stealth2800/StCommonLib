@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import com.stealthyone.bukkit.stcommonlib.permissions.IPermissionNode;
@@ -34,5 +35,20 @@ public final class PlayerUtils {
 		}
 		
 		return returnList;
+	}
+	
+	/**
+	 * Returns the distance between two players
+	 * @param player
+	 * @param otherPlayer
+	 * @return Null if players are in different worlds
+	 */
+	public final static double distanceFrom(Player player, Player otherPlayer) {
+		Location pos1 = player.getLocation();
+		Location pos2 = otherPlayer.getLocation();
+		if (pos1.getWorld() != pos2.getWorld()) {
+			return (Double) null;
+		}
+		return pos1.distance(pos2);
 	}
 }

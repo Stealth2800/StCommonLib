@@ -30,4 +30,5 @@ public final class InventoryUtils {
 			itemStack.setAmount(itemCount - amount);
 		}
 	}
+
 }

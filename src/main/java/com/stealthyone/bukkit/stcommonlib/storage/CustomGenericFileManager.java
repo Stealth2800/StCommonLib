@@ -7,32 +7,24 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-@Deprecated
-public class CustomFileManager {
+/**
+ * Custom file that uses YML config
+ * @author austin
+ */
+public class CustomGenericFileManager {
 
-	private JavaPlugin plugin;
-	
-	private String fileName;
-	private String path;
 	private File customFile;
 	private FileConfiguration customConfig;
 
-	public CustomFileManager(JavaPlugin plugin, String fileName) {
-		this(plugin, fileName, "");
-	}
-
-	public CustomFileManager(JavaPlugin plugin, String fileName, String path) {
-		this.plugin = plugin;
-		this.fileName = fileName;
-		this.path = path;
+	@Deprecated
+	public CustomGenericFileManager(JavaPlugin plugin, File file) {
+		this.customFile = file;
 		this.reloadConfig();
-		if (!customFile.exists()) {
-			try {
-				customFile.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+	}
+	
+	public CustomGenericFileManager(File file) {
+		this.customFile = file;
+		this.reloadConfig();
 	}
 	
 	public final void copyDefaults(FileConfiguration otherConfig) {
@@ -49,17 +41,23 @@ public class CustomFileManager {
 		return this.customFile;
 	}
 	
+	public final void rename(String newName) {
+		File newDest = new File(newName);
+		customFile.renameTo(newDest);
+		customFile = newDest;
+	}
+	
 	/**
 	 * Reload file from disk
 	 */
 	public void reloadConfig() {
-		if (customFile == null) {
-			if (path.length() > 1) {
-				customFile = new File(plugin.getDataFolder() + File.separator + path, fileName + ".yml");
-			} else {
-				customFile = new File(plugin.getDataFolder(), fileName + ".yml");
+		if (!customFile.exists()) {
+			try {
+				customFile.createNewFile();
+				saveFile();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			saveFile();
 		}
 		customConfig = YamlConfiguration.loadConfiguration(customFile);
 	}
@@ -75,6 +73,14 @@ public class CustomFileManager {
 		return customConfig;
 	}
 
+	/**
+	 * Returns if the config is empty or not
+	 * @return True if empty
+	 */
+	public boolean isEmpty() {
+		return customConfig.getKeys(false).size() == 0;
+	}
+	
 	/**
 	 * Save changes to file on disk
 	 * @throws IOException 

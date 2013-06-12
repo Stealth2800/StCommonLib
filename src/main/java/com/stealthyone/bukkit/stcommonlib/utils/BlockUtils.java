@@ -9,10 +9,10 @@ public final class BlockUtils {
 		return block.getState() instanceof Sign;
 	}
 	
-	public final static Sign getSign(Block block) throws BlockNotSignException {
+	public final static Sign getSign(Block block) {
 		if (isBlockSign(block)) {
 			return (Sign) block.getState();
 		}
-		throw new BlockNotSignException(String.format("Block at %s, %s, %s is not a sign!", block.getX(), block.getY(), block.getZ()));
+		throw new BlockNotSignException(block.getWorld().getName(), block.getX(), block.getY(), block.getZ());
 	}
 }
