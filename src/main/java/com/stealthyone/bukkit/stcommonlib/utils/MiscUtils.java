@@ -1,10 +1,23 @@
 package com.stealthyone.bukkit.stcommonlib.utils;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public final class MiscUtils {
 
+	public final static String convertLocationToString(Location location) {
+		return convertLocationToString(location, "%s - %d, %d, %d");
+	}
+	
+	public final static String convertLocationToString(Location location, String format) {
+		String worldName = location.getWorld().getName();
+		int x = location.getBlockX();
+		int y = location.getBlockY();
+		int z = location.getBlockZ();
+		return String.format(format, worldName, x, y, z);
+	}
+	
 	public final static String convertWeVectorToString(com.sk89q.worldedit.Vector vector) {
 		String x = Integer.toString(vector.getBlockX());
 		String y = Integer.toString(vector.getBlockY());
