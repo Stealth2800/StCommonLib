@@ -17,7 +17,7 @@ public final class FileUtils {
 	 * @param fileName
 	 */
 	public final static void copyGenericFileFromJar(JavaPlugin plugin, String fileName) {
-		CustomGenericFileManager file = new CustomGenericFileManager(new File(fileName));
+		CustomGenericFileManager file = new CustomGenericFileManager(new File(plugin.getDataFolder() + File.separator + fileName));
 		InputStream in = plugin.getResource(fileName);
 		
 		try {
