@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.stealthyone.bukkit.stcommonlib.logging.PluginLogger;
 
+@Deprecated
 public abstract class PluginBase extends JavaPlugin {
 
 	protected PluginLogger log;

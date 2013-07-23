@@ -27,4 +27,5 @@ public final class BlockUtils {
 		}
 		throw new BlockNotChestException(block.getWorld().getName(), block.getX(), block.getY(), block.getZ());
 	}
+	
 }

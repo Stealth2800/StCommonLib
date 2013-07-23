@@ -2,6 +2,7 @@ package com.stealthyone.bukkit.stcommonlib.utils;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -29,6 +30,13 @@ public final class InventoryUtils {
 		} else {
 			itemStack.setAmount(itemCount - amount);
 		}
+	}
+	
+	public static int getItemCount(Inventory inventory) {
+		int count = 0;
+		for (ItemStack item : inventory.getContents())
+			if (item != null) count ++;
+		return count;
 	}
 
 }

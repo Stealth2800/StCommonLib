@@ -5,7 +5,12 @@ import java.util.Random;
 public final class RandomUtils {
 
 	public final static String getRandomString(int length) {
-		char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		return getRandomString(length, false);
+	}
+	
+	public final static String getRandomString(int length, boolean withNumbers) {
+		char[] chars = withNumbers ? "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray() : "abcdefghijklmnopqrstuvwxyz".toCharArray();
+			
 		StringBuilder sb = new StringBuilder();
 		Random random = new Random();
 		for (int i = 0; i < length; i++) {

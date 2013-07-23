@@ -14,6 +14,10 @@ public class HelpManager {
 	
 	private CustomJarFileManager helpFile;
 	
+	public HelpManager(JavaPlugin plugin) {
+		this(plugin, "help");
+	}
+	
 	public HelpManager(JavaPlugin plugin, String fileName) {
 		this.plugin = plugin;
 		helpFile = new CustomJarFileManager(plugin, fileName);
@@ -25,7 +29,7 @@ public class HelpManager {
 	}
 	
 	public final List<String> getMessages(String path) {
-		List<String> returnList = getHelpFile().getConfig().getStringList("help." + path);
+		List<String> returnList = helpFile.getConfig().getStringList("help." + path);
 		return returnList;
 	}
 	

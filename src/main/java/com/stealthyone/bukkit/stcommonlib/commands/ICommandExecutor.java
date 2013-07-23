@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+@Deprecated
 public interface ICommandExecutor extends CommandExecutor {
 
 	@Override

@@ -21,10 +21,16 @@ public final class StringUtils {
 	}
 	
 	public final static boolean startsWithVowel(String input) {
-		char c = input.charAt(0);
-		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-			return true;
+		char c = Character.toUpperCase(input.charAt(0));
+		switch (c) {
+			case 'A':
+			case 'E':
+			case 'I':
+			case 'O':
+			case 'U':
+				return true;
+			default:
+				return false;
 		}
-		return false;
 	}
 }
